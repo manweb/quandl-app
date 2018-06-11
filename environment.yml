@@ -1,0 +1,11 @@
+name: quandl_app
+dependencies:
+	- flask
+	- numpy
+	- pandas
+	- bokeh
+	- dill
+	- jinja2
+	- pip
+	- simplejson
+
