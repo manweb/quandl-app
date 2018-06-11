@@ -1,1 +1,1 @@
-web: gunicorn app:quandlApp
+web: gunicorn quandl_app:app
