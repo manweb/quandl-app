@@ -3,14 +3,13 @@ import numpy as np
 from flask import Flask, render_template, request, redirect
 from bokeh.plotting import figure
 from bokeh.embed import components
-import bokeh
+from bokeh.resources import INLINE
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-	ver = bokeh.__version__
-	return render_template('index.html', version=ver)
+	return render_template('index.html')
 
 @app.route('/plot_data')
 def plot_data():
@@ -18,7 +17,9 @@ def plot_data():
 
 	script, div = components(plot)
 
-	return render_template('plot_data.html', script=script, div=div)
+	resources = INLINE.render()
+
+	return render_template('plot_data.html', script=script, div=div, resources=resources)
 
 def get_plot():
 	x = np.arange(1000)
