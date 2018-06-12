@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css')}}">
 	</head>
 	<body>
-		<div>Choose the ticker identifier to plot</div>
+		<div>Choose the ticker identifier to plot {{ version }}</div>
 		<div>
 			<form action=plot_data>
 			<input type=submit value='Plot'>
