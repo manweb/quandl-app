@@ -19,17 +19,25 @@ def index():
 @app.route('/plot_data', methods=['GET', 'POST'])
 def plot_data():
 	ticker = request.form['ticker']
-	columns, x, y = get_data(ticker, '2017-01-01', '2017-12-31')
-	plot = get_plot(columns, x, y)
+	date_range = request.form['daterange']
+	date_split = date_range.split(' - ')
+	date_start = datetime.strptime(date_split[0], '%m/%d/%Y').strftime('%Y-%m-%d')
+	date_end = datetime.strptime(date_split[1], '%m/%d/%Y').strftime('%Y-%m-%d')
+	columns, x, y = get_data(ticker, date_start, date_end)
+
+	plot_title = '%s for %s'%(ticker, date_range)
+	plot = get_plot(plot_title, columns, x, y)
 
 	script, div = components(plot)
 
 	resources = INLINE.render()
 
-	return render_template('plot_data.html', script=script, div=div, resources=resources)
+	title = 'Data for ticker %s from %s'%(ticker, date_range)
 
-def get_plot(columns, x, y):
-	p = figure(x_axis_type='datetime', plot_width=600, plot_height=400)
+	return render_template('plot_data.html', script=script, div=div, resources=resources, title=title)
+
+def get_plot(plot_title, columns, x, y):
+	p = figure(title=plot_title, x_axis_type='datetime', plot_width=600, plot_height=400)
 
 	p.xaxis.axis_label = 'date'
 	p.yaxis.axis_label = 'price'
@@ -37,6 +45,9 @@ def get_plot(columns, x, y):
 	palette = cp[0:len(y)]
 	for i, yt in enumerate(y):
 		p.line(x, yt, line_color=palette[i], legend=columns[i+2])
+
+	p.legend.location = 'top_left'
+	p.legend.click_policy = 'hide'
 
 	return p
 
