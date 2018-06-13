@@ -1,0 +1,46 @@
+body
+{
+	background-image: url('background.jpg');
+	background-size: cover;
+}
+
+.main_div
+{
+	width: 100%;
+	padding: 200px 0px 0px 0px;
+	text-align: center;
+}
+
+.text_font
+{
+	color: #ffffff;
+	font-size: 16px;
+}
+
+.input_field
+{
+	height: 30px;
+	width: 100px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #bcbcbc;
+	background-color: #e5efff;
+	color: #bcbcbc;
+	font-family: helvetica, sans-serif;
+	font-size: 16px;
+	text-align: center;
+	vertical-align: bottom;
+}
+
+.input_button
+{
+	height: 36px;
+	width: 50px;
+	background-color: #2867cc;
+	color: #ffffff;
+	font-family: helvetica, sans-serif;
+	font-size: 16px;
+	border: none;
+	border-radius: 10px
+}
+

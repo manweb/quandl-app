@@ -5,10 +5,11 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css')}}">
 	</head>
 	<body>
-		<div>Choose the ticker identifier to plot</div>
-		<div>
-			<form action=plot_data>
-			<input type=submit value='Plot'>
+		<div class='main_div'>
+			<p class='text_font'>Choose the ticker identifier to plot</p><br>
+			<form action=plot_data method='POST'>
+			<input type='text' value='GOOG' name='ticker' class='input_field'>
+			<input type=submit value='Plot' class='input_button'>
 			</form>
 		</div>
 	</body>
