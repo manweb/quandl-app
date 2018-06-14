@@ -25,7 +25,7 @@ def plot_data():
 	date_end = datetime.strptime(date_split[1], '%m/%d/%Y').strftime('%Y-%m-%d')
 	columns, x, y = get_data(ticker, date_start, date_end)
 
-	plot_title = '%s for %s'%(ticker, date_range)
+	plot_title = '%s for %s (click legend to toggle curves on/off)'%(ticker, date_range)
 	plot = get_plot(plot_title, columns, x, y)
 
 	script, div = components(plot)
