@@ -52,7 +52,7 @@ def get_plot(plot_title, columns, x, y):
 	return p
 
 def get_data(ticker, start, end):
-	url = 'https://www.quandl.com/api/v3/datatables/WIKI/PRICES?qopts.columns=ticker,date,open,adj_open,close,adj_close&ticker=%s&date.gte=%s&date.lte=%s&api_key=agvvi4s_WEGvpdNA-7Qz'%(ticker, start, end)
+	url = 'https://www.quandl.com/api/v3/datatables/WIKI/PRICES?qopts.columns=ticker,date,open,adj_open,close,adj_close&ticker=%s&date.gte=%s&date.lte=%s&api_key=%s'%(ticker, start, end, os.environ['QUANDL_KEY'])
 
 	r = requests.get(url)
 	json_data = r.text.replace('null', '0')
